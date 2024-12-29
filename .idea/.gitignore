@@ -1,0 +1,31 @@
+# Maven e dependências
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# Arquivos de configuração de IDEs
+.idea/
+*.iml
+*.class
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+hs_err_pid*
+
+# Credenciais e configurações locais
+.env
+*.keystore
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos gerados
+*.jar
+*.war
+*.ear
+
+# Git e outros
+*.swp
+*~
