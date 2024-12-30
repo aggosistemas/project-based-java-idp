@@ -1,7 +1,7 @@
-name: Criar Infra CI/CD
+name: Atualização da Pipeline CI/CD
 
 on:
-  workflow_dispatch: # Permite acionamento manual no GitHub Actions
+  workflow_dispatch: # Permite execução manual
 
 jobs:
   terraform:
@@ -15,13 +15,6 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.5.5
-
-    - name: Debug AWS Credentials
-      run: aws sts get-caller-identity
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ca-central-1
 
     - name: Initialize Terraform
       working-directory: terraform
