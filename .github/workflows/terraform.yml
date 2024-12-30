@@ -1,0 +1,33 @@
+name: Criar Infra CI/CD
+
+on:
+  workflow_dispatch: # Permite acionamento manual no GitHub Actions
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.5.5
+
+    - name: Initialize Terraform
+      working-directory: terraform
+      run: terraform init
+
+    - name: Validate Terraform
+      working-directory: terraform
+      run: terraform validate
+
+    - name: Plan Terraform
+      working-directory: terraform
+      run: terraform plan -out=tfplan
+
+    - name: Apply Terraform
+      working-directory: terraform
+      run: terraform apply -auto-approve tfplan
