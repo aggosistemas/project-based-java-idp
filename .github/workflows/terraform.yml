@@ -18,7 +18,7 @@ jobs:
 
     - name: Initialize Terraform
       working-directory: terraform
-      run: terraform init
+      run: terraform init -reconfigure
 
     - name: Validate Terraform
       working-directory: terraform
@@ -31,3 +31,10 @@ jobs:
     - name: Apply Terraform
       working-directory: terraform
       run: terraform apply -auto-approve tfplan
+
+    - name: Debug AWS Credentials
+      run: aws sts get-caller-identity
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ca-central-1
