@@ -1,12 +1,7 @@
-name: Terraform CI/CD
+name: Criar Infra CI/CD
 
 on:
-  push:
-    branches:
-      - 04-Pipeline
-    paths:
-      - 'terraform/**'
-    workflow_dispatch:
+  workflow_dispatch: # Permite acionamento manual no GitHub Actions
 
 jobs:
   terraform:
@@ -34,6 +29,5 @@ jobs:
       run: terraform plan -out=tfplan
 
     - name: Apply Terraform
-      if: github.event_name == 'push'
       working-directory: terraform
       run: terraform apply -auto-approve tfplan
