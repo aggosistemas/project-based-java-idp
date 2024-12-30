@@ -1,7 +1,7 @@
-name: Criar Infra CI/CD
+name: Atualização da Pipeline CI/CD
 
 on:
-  workflow_dispatch: # Permite acionamento manual no GitHub Actions
+  workflow_dispatch: # Permite execução manual
 
 jobs:
   terraform:
@@ -18,7 +18,7 @@ jobs:
 
     - name: Initialize Terraform
       working-directory: terraform
-      run: terraform init
+      run: terraform init -reconfigure
 
     - name: Validate Terraform
       working-directory: terraform
