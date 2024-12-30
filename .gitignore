@@ -1,2 +1,44 @@
-# Project exclude paths
+# Logs
+*.log
+*.tmp
+
+# Compilação Java
 /target/
+*.class
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfplan
+.crash.log
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+*.backup
+
+# Arquivos de sobreposição do Terraform
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Arquivos temporários
+*.swp
+*~
