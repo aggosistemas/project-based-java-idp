@@ -31,14 +31,10 @@ jobs:
       working-directory: terraform
       run: terraform validate
 
-    - name: Plan Terraform
+    - name: Plan Terraform with Debug
       working-directory: terraform
       env:
-      TF_LOG: DEBUG
-      run: terraform plan -out=tfplan
-
-    - name: Plan Terraform
-      working-directory: terraform
+        TF_LOG: DEBUG
       run: terraform plan -out=tfplan
 
     - name: Apply Terraform
