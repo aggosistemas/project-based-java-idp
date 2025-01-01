@@ -51,9 +51,11 @@ resource "aws_apigatewayv2_integration" "api_integration" {
 }
 
 resource "aws_apigatewayv2_route" "api_route" {
+  depends_on = [aws_apigatewayv2_integration.api_integration]
+
   api_id    = aws_apigatewayv2_api.api_gateway.id
   route_key = "ANY /{proxy+}"
-  target    = aws_apigatewayv2_integration.api_integration.id
+  target    = "integrations/${aws_apigatewayv2_integration.api_integration.id}"
 }
 
 resource "aws_apigatewayv2_stage" "api_stage" {
