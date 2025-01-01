@@ -1,4 +1,4 @@
-name: Terraform CI/CD Debugging
+name: Terraform CI/CD
 
 on:
   workflow_dispatch: # Permite acionamento manual
@@ -23,9 +23,30 @@ jobs:
       with:
         terraform_version: 1.5.5
 
-    - name: Plan Terraform with Debug
+    - name: Initialize Terraform
+      working-directory: terraform
+      run: terraform init -reconfigure
+
+    - name: Validate Terraform
+      working-directory: terraform
+      run: terraform validate
+
+    - name: Plan Terraform
       working-directory: terraform
       env:
-        TF_LOG: DEBUG
-        TF_LOG_PATH: ./terraform-debug.log
+      TF_LOG: DEBUG
       run: terraform plan -out=tfplan
+
+    - name: Plan Terraform
+      working-directory: terraform
+      run: terraform plan -out=tfplan
+
+    - name: Apply Terraform
+      working-directory: terraform
+      run: terraform apply -auto-approve -input=false
+
+    - name: Debug AWS Resources
+      run: aws cloudformation list-stacks
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
