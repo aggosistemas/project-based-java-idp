@@ -4,11 +4,11 @@ variable "aws_region" {
 }
 
 variable "project_name" {
-  description = "Name of the project"
+  description = "first-one-project"
 }
 
 variable "lambda_name" {
-  description = "Name of the Lambda function"
+  description = "first-my-lambda"
 }
 
 variable "lambda_memory" {
